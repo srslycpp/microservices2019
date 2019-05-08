@@ -11,6 +11,7 @@ public class MovieInfoService {
 
     @RequestMapping("/{movieId}")
     public Movie getMovie(@PathVariable("movieId") String movieID){
-        return new Movie("SomeMovie", "SomeMovieTest");
+
+        return new Movie("SomeMovie", "SomeMovieFromMovieInfoService Port:8084");
     }
 }

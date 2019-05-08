@@ -23,20 +23,31 @@ public class MovieCatalogResources {
 
         //Get all rated movie IDs
         List<Rating> ratings = Arrays.asList(
-                new Rating("transformers", 11),
-                new Rating("transformers 3", 3)
+                new Rating("1", 11),
+                new Rating("1", 11),
+                new Rating("1", 11),
+                new Rating("1", 11),
+                new Rating("1", 11),
+                new Rating("1", 11),
+                new Rating("1", 11),
+                new Rating("2", 3)
         );
+
      return ratings.stream().map(rating -> {
 
          //For each movie ID, call movie info service and get the details
          Movie movie = restTemplate.getForObject("http://localhost:8084/movies/"+ rating.getMovieId(), Movie.class);
+         Rating ratin = restTemplate.getForObject("http://localhost:8085/rating/"+ movie.getName(), Rating.class);
 
          //Put them all together
-         return new CatalogItem(movie.getName(),movie.getDesc() ,rating.getRating());
+         return new CatalogItem(movie.getName(),movie.getDesc() ,ratin.getRating());
      })
              .collect(Collectors.toList());
 
-//            return Collections.singletonList(new CatalogItem("Transformer", "Very interesting movie", 2));
+
+
+
+     //            return Collections.singletonList(new CatalogItem("Transformer", "Very interesting movie", 2));
 
     }
 }

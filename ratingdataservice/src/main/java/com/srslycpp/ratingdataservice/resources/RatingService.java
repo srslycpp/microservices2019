@@ -11,6 +11,6 @@ public class RatingService {
 
     @RequestMapping("/{movieId}")
     public Ratings getRatings(@PathVariable("movieId") String movieId){
-        return new Ratings(movieId, 8);
+        return new Ratings(movieId, 88);
     }
 }
